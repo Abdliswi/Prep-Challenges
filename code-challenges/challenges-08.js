@@ -27,12 +27,14 @@
 // ["Customer Name :Romio Joliat , Age :35", "Customer Name :Mario Ristrova , Age :39", ... ]
 
 const customerAndAge = (obj) => {
+  // write your code here
   var array  = [];
   for (let key in obj) {
-    array.push(Customer Name :${key} , Age :${obj[key]})
+    array.push(`Customer Name :${key} , Age :${obj[key]}`)
   }
   return array;
 };
+
 // -------------------------------------------------------------------------------------------------------
 
 // -------------------------------------------------------------------------------------------------------
@@ -58,10 +60,10 @@ const customerAndAge = (obj) => {
 
 const getEntries = (obj) => {
   var array  = [];
-    array.push(name: ${obj.name});
-    array.push(ingredients: ${obj.ingredients.join(',')});
-    array.push(cookTime: ${obj.cookTime});
-    array.push(price: ${obj.price});
+    array.push(`name: ${obj.name}`);
+    array.push(`ingredients: ${obj.ingredients.join(',')}`);
+    array.push(`cookTime: ${obj.cookTime}`);
+    array.push(`price: ${obj.price}`);
   return array;
 };
 // -------------------------------------------------------------------------------------------------------
@@ -105,7 +107,12 @@ const getInfo = (arr) => {
   let coursesName = [];
   let studentsName = [];
   // write your code here
-
+    arr.forEach(course => {
+      coursesName.push(course.course);
+      course.Students.forEach(student => {
+          studentsName.push(student);
+      });
+    });
   return { coursesName, studentsName };
 };
 // -------------------------------------------------------------------------------------------------------
@@ -139,3 +146,5 @@ module.exports = {
   getInfo,
   getStudents,
 };
+
+
