@@ -21,12 +21,9 @@
 //  2- The first letters of the firstName and lastName should be capital letter
 
 const objLat = (obj) => {
-
-
-    return my name is ${obj.firstName.charAt(0).toUpperCase() + obj.firstName.substring(1)} ${obj.lastName.charAt(0).toUpperCase() + obj.lastName.substring(1)} I am ${obj.age} YO, and I love ${obj.hobby}.
-
+    // write your code here
+    return `my name is ${(obj.firstName).charAt(0).toUpperCase() + (obj.firstName).slice(1)} ${(obj.lastName).charAt(0).toUpperCase() + (obj.lastName).slice(1)} I am ${obj.age} YO, and I love ${obj.hobby}.`
 };
-
 // -------------------------------------------------------------------------------------------------------
 
 // -------------------------------------------------------------------------------------------------------
@@ -88,37 +85,23 @@ const objLat = (obj) => {
 //  1- Full name is first name + last name
 //  2- If one of the names is null dont add it to the full name
 
-
 const cvFormatter = (arr) => {
-
-    let array2 = [];
-    let g = 0;
+    // write your code here
+    let applicants = [];
     for (let i = 0; i < arr.length; i++) {
         if (arr[i].yearsOfExperience > 1) {
-            array2[g] = arr[i];
-            g++;
-        }
-    }
-    let finalArray = function (array2) {
-        return array2.map(function (modify) {
-            let result = {};
-            if (modify.firstName == null) {
-                result['fullName'] = modify.lastName;
-                result['tech'] = modify.tech;
-            } else if (modify.lastName == null) {
-                result['fullName'] = modify.firstName;
-                result['tech'] = modify.tech;
-            } else {
-                result['fullName'] = ${modify.firstName} ${modify.lastName};
-                result['tech'] = modify.tech;
+            if (arr[i].firstName == null) {
+                arr[i].firstName = '';
             }
-
-            return result;
-        });
+            if (arr[i].lastName == null) {
+                arr[i].lastName = '';
+            } else {
+                arr[i].lastName = ' ' + arr[i].lastName;
+            }
+            applicants.push({ fullName: arr[i].firstName + arr[i].lastName, tech: arr[i].tech })
+        }
     };
-    ;
-
-    return finalArray(array2)
+    return applicants;
 };
 
 // -------------------------------------------------------------------------------------------------------
@@ -146,6 +129,36 @@ const cvFormatter = (arr) => {
 
 const applicationsStatics = (arr) => {
     // write your code here
+    let result = {
+            python_Devs: 0,
+            javaScript_Devs: 0,
+            dotNet_Devs: 0,
+            java_Devs: 0,
+            totalApplicants: 0,
+            rejectedApplicants: 0,
+        }
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i].tech == "JS") {
+            result.javaScript_Devs += 1;
+            result.totalApplicants++;
+        }
+        else if (arr[i].tech == ".Net") {
+            result.dotNet_Devs += 1;
+            result.totalApplicants++;
+        }
+        else if (arr[i].tech == "Java") {
+            result.java_Devs += 1;
+            result.totalApplicants++;
+        }
+        else if (arr[i].tech == "Python") {
+            result.python_Devs += 1;
+            result.totalApplicants++;
+        }
+        if (((arr[i].firstName == '' || arr[i].firstName == null)&&(arr[i].lastName == '' || arr[i].lastName == null)) ||  arr[i].yearsOfExperience <= 1 ) {
+            result.rejectedApplicants += 1;
+        }
+}
+return result;
 };
 // -------------------------------------------------------------------------------------------------------
 
@@ -273,7 +286,20 @@ let data = {
 
 const classesAvg = (data) => {
     // write your code here
+    let sum =0;
+    for (let i = 0; i < data.grades.length; i++) {
+        for (let j = 0; j < data.grades[i].classes.length; j++) {
+            sum=0;
+            for (let z = 0; z < data.grades[i].classes[j].classScores.length; z++) {
+                sum += data.grades[i].classes[j].classScores[z];
+            }
+            data.grades[i].classes[j].avg =Math.floor( sum / data.grades[i].classes[j].classScores.length) ;
+        }
+        }
+    return data;
 };
 // -------------------------------------------------------------------------------------------------------
 
 module.exports = { objLat, cvFormatter, applicationsStatics, classesAvg };
+
+
