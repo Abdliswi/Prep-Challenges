@@ -14,12 +14,6 @@
 
 const reverseString = (string) => {
     //write your code here ...
-    let revString = "";
-    for (let i = string.length - 1; i >= 0; i--) {
-        revString += string[i];
-    }
-    return revString;
-
 }
 // -------------------------------------------------------------------------------------------------------
 
@@ -36,8 +30,6 @@ const reverseString = (string) => {
 
 const detectFace = (arr) => {
     //write your code here ...
-
-    return arr.filter(w => w.includes("^_^"));
 }
 // -------------------------------------------------------------------------------------------------------
 
@@ -53,13 +45,7 @@ const detectFace = (arr) => {
 
 const eveCharacter = (str) => {
     //write your code here ...
-    let evenString = "";
-    for (let i = 0; str.length > i; i=i+2) {
-            evenString += str[i];
-    }
-    return evenString;
 }
-
 // -------------------------------------------------------------------------------------------------------
 
 
@@ -80,12 +66,7 @@ const eveCharacter = (str) => {
 
 const chickenGradients = (arr) => {
     //write your code here ...
-    return arr.map(s => {
-        return s.filter(w => (w.includes("chicken")));  
-    });
 }
 // -------------------------------------------------------------------------------------------------------
 
 module.exports = { reverseString, detectFace, eveCharacter, chickenGradients };
-
-
